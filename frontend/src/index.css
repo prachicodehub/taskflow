@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+
+/*
+ * TaskFlow visual language: a planning wall.
+ * Deep ink-navy frame, cool paper canvas, one signal-yellow accent (the "flag" you'd stick on a card).
+ * Priority has its own colours: high = vermilion, medium = signal, low = teal.
+ */
+@theme {
+  --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink-950: #0d1729;
+  --color-ink-900: #14213d;
+  --color-ink-800: #1f2f52;
+  --color-ink-700: #33466b;
+  --color-ink-600: #4b5d80;
+  --color-ink-500: #67769a;
+  --color-ink-400: #8d99b3;
+  --color-ink-300: #b5bfd1;
+  --color-ink-200: #d6dce6;
+  --color-ink-100: #e7ebf1;
+  --color-ink-50: #f4f6f9;
+
+  --color-canvas: #edf0f4;
+
+  --color-signal-300: #fadf7a;
+  --color-signal-400: #f7cf3d;
+  --color-signal-500: #f5c518;
+  --color-signal-700: #8a6a00;
+  --color-signal-50: #fdf6d8;
+
+  --color-flag-500: #e4572e;
+  --color-flag-700: #b5391a;
+  --color-flag-50: #fdece6;
+
+  --color-calm-500: #2f8f7b;
+  --color-calm-700: #1e6b5b;
+  --color-calm-50: #e3f2ee;
+
+  --animate-float-card: float-card 3.2s ease-in-out infinite;
+
+  @keyframes float-card {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(-3deg);
+    }
+    50% {
+      transform: translate(10px, -6px) rotate(-1deg);
+    }
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-canvas font-sans text-ink-900 antialiased;
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+h1,
+h2,
+h3 {
+  @apply font-display;
+  letter-spacing: -0.015em;
+}
+
+/* Keyboard focus: ink outline on light surfaces, signal yellow on the navy frame. */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-ink-700;
+}
+.on-ink :focus-visible {
+  @apply outline-signal-400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

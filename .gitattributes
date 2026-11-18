@@ -1,0 +1,7 @@
+# Normalise line endings: LF in the repo and on checkout, so scripts work in Linux CI and Docker.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.jar binary
+*.png binary
+*.jpg binary

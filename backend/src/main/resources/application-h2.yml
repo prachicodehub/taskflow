@@ -1,0 +1,9 @@
+# Run without PostgreSQL/Docker (in-memory, data is lost on restart):
+#   .\gradlew.bat bootRun --args="--spring.profiles.active=h2"
+# Same Flyway migrations as production; H2 runs in PostgreSQL compatibility mode.
+spring:
+  datasource:
+    url: jdbc:h2:mem:taskflow;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver

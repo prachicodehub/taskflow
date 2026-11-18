@@ -1,0 +1,13 @@
+# Used by tests annotated with @ActiveProfiles("test"): in-memory H2 in PostgreSQL mode,
+# with the same Flyway migrations as production.
+spring:
+  datasource:
+    url: jdbc:h2:mem:taskflow;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+taskflow:
+  jwt:
+    secret: test-secret-test-secret-test-secret-test-secret
+    expiration-minutes: 60
